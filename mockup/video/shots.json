@@ -135,29 +135,29 @@
   ]
  },
  {
-  "text": "A separate hook slides up onto a dovetail rail on the side of the cap, and hangs over the tank rim to carry the weight of the bottle.",
+  "text": "A separate hook hangs over the tank rim. A dovetail rail on the side of the cap drops into a slot in the hook from above and rests on its floor, so the weight of the bottle holds it in place.",
   "cam": [
    [
-    210,
-    0,
-    70
+    200,
+    -95,
+    -35
    ],
    [
     150,
-    -90,
-    100
+    -110,
+    85
    ]
   ],
   "look": [
    [
     0,
-    35,
-    30
+    22,
+    8
    ],
    [
     0,
-    35,
-    30
+    30,
+    20
    ]
   ]
  },

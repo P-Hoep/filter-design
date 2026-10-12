@@ -36,9 +36,9 @@ bottle_filter_return_clip.stl  rim clip for return hose, already in print pose (
 bottle_filter_gasket_tpu.stl   optional printed gasket (TPU)
 bottle_filter_cap.dxf / _drawing.png   CADCraft engineering drawing (section, top view, hook side view)
 bottle_filter_assembly_preview.png     Blender render: cap underside (intake barb) and cap + hook with tubing
-filter_flythrough.mp4          narrated video, 720p 7.6 MB (the user copied it here from mockup/video/)
-media/filter_flythrough_480p.mp4     compressed video (854x480, crf 30, 1.5 MB) linked from README
-media/filter_flythrough_preview.gif  16 s / 3.5 MB teaser (3 clips: intro, intake hose, return clip) shown inline in README
+filter_flythrough.mp4          narrated video, 720p 7.9 MB (the user copied it here from mockup/video/)
+media/filter_flythrough_480p.mp4     compressed video (854x480, crf 30, 1.6 MB) linked from README
+media/filter_flythrough_preview.gif  16 s / 3.3 MB teaser (3 clips: intro, intake hose, return clip) shown inline in README
 README.md                      public project page: overview, images, GIF -> video link, params
 PARTS_LIST.md                  non-printed bill of materials + leak/siphon warning
 mockup/                        full-system scene: tank, bottle, pump, hoses (see mockup/README.md)

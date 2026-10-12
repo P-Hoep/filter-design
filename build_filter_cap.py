@@ -38,7 +38,8 @@ IBARB_RIDGE_R = 3.6   # 7.2 mm ridges (top barbs: 7.6); the hose here only sees 
 IBARB_ROOT_R = 4.2    # fillet cone where the barb meets the ceiling
 INTAKE_HOSE_LEN = 180.0   # tubing length below the cap ceiling; cut to (bottle height - ~20 mm)
 
-# Tank hook: slides up onto a dovetail rail on the cap (+Y side) and hangs over the tank rim
+# Tank hook: hangs over the tank rim; the cap's dovetail rail (+Y side) drops into a slot in the hook
+# from above and rests on the slot floor, so the bottle's weight holds it in
 RAIL_Y0, RAIL_Y1 = 20.0, 24.0   # rail from narrow neck (y0) to wide face (y1)
 RAIL_W0, RAIL_W1 = 8.0, 16.0    # dovetail widths at y0 / y1 (45 deg flanks print cleanly)
 WEB_W = 8.0                     # web joining rail to the cap wall
@@ -49,6 +50,7 @@ HOOK_H = 55.0         # tank rim height above the cap's open end
 HOOK_W = 26.0         # hook width (X)
 HOOK_T = 5.0          # hook plate thickness
 LIP_L = 18.0          # how far the lip reaches down inside the tank
+SLOT_FLOOR = 5.0      # floor under the dovetail slot (below the cap's open end) that carries the cap
 
 # Return-hose clip: clamps on the tank rim and holds the return hose pointing down into the tank
 CLIP_GLASS = 6.0      # your actual glass/rim thickness (the clip grips it)
@@ -149,7 +151,7 @@ def hook_profile():
     p0 = g0 - HOOK_T             # back of the hook plate
     s0 = RAIL_Y0 - CLR           # face of the standoff block that holds the dovetail slot
     top = HOOK_H + HOOK_T
-    return [(s0, 0), (g0, 0), (g0, HOOK_H - 2), (g0 + 2, HOOK_H), (g1, HOOK_H),
+    return [(s0, -SLOT_FLOOR), (g0, -SLOT_FLOOR), (g0, HOOK_H - 2), (g0 + 2, HOOK_H), (g1, HOOK_H),
             (g1, HOOK_H - LIP_L), (g1 + HOOK_T, HOOK_H - LIP_L + 1), (g1 + HOOK_T, top),
             (p0, top), (p0, H_TOP + 5), (s0, H_TOP + 5)]
 
@@ -168,10 +170,12 @@ def lay_flat(m):
 
 
 def build_hook(print_pose=True):
+    """Dovetail slot open at the top, closed by a floor at z = 0: the rail drops in from above."""
     hook = extrude_yz(hook_profile(), HOOK_W)
-    hook -= dovetail(RAIL_Y0 - CLR, RAIL_Y1 + CLR, RAIL_W0 + 2 * CLR, RAIL_W1 + 2 * CLR, -1, H_TOP + CLR)
-    hook -= Manifold.cube((RAIL_W0 + 2 * CLR, 1.01, H_TOP + CLR + 1)).translate(
-        (-(RAIL_W0 / 2 + CLR), RAIL_Y0 - CLR - 1.0, -1))                    # slot mouth
+    slot_top = H_TOP + 6                                                   # through the top of the block
+    hook -= dovetail(RAIL_Y0 - CLR, RAIL_Y1 + CLR, RAIL_W0 + 2 * CLR, RAIL_W1 + 2 * CLR, 0, slot_top)
+    hook -= Manifold.cube((RAIL_W0 + 2 * CLR, 1.01, slot_top)).translate(
+        (-(RAIL_W0 / 2 + CLR), RAIL_Y0 - CLR - 1.0, 0))                     # slot mouth
     return lay_flat(hook) if print_pose else hook
 
 

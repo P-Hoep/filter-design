@@ -6,14 +6,15 @@
 | All 5 STLs watertight | yes | `save()` output (`trimesh.is_watertight`) |
 | Thread is right-handed with a 2.7 pitch | yes | Sliced the thread void at z = 1.0/1.3/1.6/1.9. The crest angle moves **+40° CCW per 0.3 mm**, which is right-hand and 360°/2.7 mm |
 | Cap ∩ hook volume | 0 | manifold intersection (`(cap ^ hook).volume()`) |
+| Hook holds the cap against gravity | yes | Cap moved 0.3 mm down ∩ hook = 15 mm³ (hits the slot floor); moved up 5/15/30 mm = 0 (lifts out); moved 0.5 mm toward −Y = 30 mm³ (dovetail holds it to the glass) |
 | Intake hose clearances | hose ∩ bottle 0, hose ∩ gasket 0; hose edge r ≤ 10.46 in the neck (bore r 10.85) | manifold intersection on the mockup hose mesh, plus the path radius |
 | Hook ∩ glass | 52 mm³, expected | Just the 2 mm inner-corner chamfer against a square glass edge |
-| Refactors left geometry unchanged | yes | Hook volume 17.76 cm³ and clip 4.78 cm³ were identical before and after the refactors |
+| Refactors left geometry unchanged | yes | Clip 4.78 cm³ unchanged. Hook changed on purpose in R8 (17.76 → 19.47 cm³, slot floor added) |
 | Return hose path folds | fixed | Asserted the end of the path's z is monotonic |
-| Video streams | h264 1280×720 + AAC + mov_text, 79.5 s | ffprobe |
+| Video streams | h264 1280×720 + AAC + mov_text, 83.1 s | ffprobe |
 | Captions in sync with shots | yes | Contact sheet of frames at 5/25/45/68 s |
 
-Reference figures (current parameters): cap ~274k tris, 11.63 cm³ (with intake barb); hook 17.76 cm³;
+Reference figures (current parameters): cap ~274k tris, 11.63 cm³ (with intake barb); hook 19.47 cm³;
 clip 4.78 cm³; gasket 0.49 cm³.
 
 ## NOT verified (no physical test yet)

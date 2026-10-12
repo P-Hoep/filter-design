@@ -18,7 +18,7 @@ geometry from `../build_filter_cap.py`. The tank, bottle, pump and tubing are st
 2. **Feed hose (red)**: from the pump straight up the inside of the glass, over the rim, and down onto the cap's **inlet** barb (the one with the intake barb underneath).
 3. **Inside the bottle**: the intake hose (red, the same tubing pushed onto the barb under the inlet) releases the water at the bottom, and it rises up through the media.
 4. **Return hose (blue)**: from the cap's **outlet** barb, up over the rim, down through the **return clip**, ending just under the water surface. Ending it near the surface ripples the water, which adds oxygen.
-5. **Hook**: slides up onto the cap's rail and hangs over the rim next to the hoses. The clip goes a few cm along the rim from the hook.
+5. **Hook**: hangs over the rim next to the hoses. Lower the cap into it from above: the cap's rail drops into the hook's slot and sits on the slot floor. The clip goes a few cm along the rim from the hook.
 
 Keep the hose arcs over the rim short and smooth. Kinks and long runs cost a lot of flow with a small pump.
 

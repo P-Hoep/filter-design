@@ -29,8 +29,8 @@ The user's requests, in order, and how each one was resolved. Dates: all of this
 - Gasket ID widened from 20 to **21 mm** so the dip tube passes beside it.
 - Hanging: a hook moulded onto the cap would need supports, and its layers would be loaded in
   peel. Chose a **45° dovetail rail on the cap** plus a **separate hook** printed flat (layers run
-  the whole J profile, so it's strong and needs no supports). The hook slides *up* onto the rail;
-  the rail's top end bears on the closed top of the slot, so the bottle's weight seats it.
+  the whole J profile, so it's strong and needs no supports). The original slot
+  was closed at the top and open at the bottom, which was wrong (fixed in R8).
 
 ## R3: Full-system mockup + return-hose clip
 > "create a subfolder with a complete mockup of where the pump and hoses should go. I think we
@@ -81,6 +81,18 @@ with remote `P-Hoep/filter-design`) and copied the MP4 to the repo root.
   both CADCraft drawings (the top view's ports had been drawn at ±11.5; fixed), narration line 4,
   the full flythrough, the 480p video and the GIF, plus the docs. Blender scenes are now saved in the
   repo (`mockup/video/filter_flythrough.blend`, `mockup/filter_mockup_stills.blend`).
+
+## R8: Hook slot was upside down
+> "the dovetail on the tank clip for the bottle doesn't make sense. IT would fall right out of it...
+> It needs to go on the other side so gravity holds it in place."
+
+**Resolution:** the user was right. The slot was closed at the top and open at the bottom, so the
+weight of the bottle pulled the rail straight out the open end; only friction held it. The slot is now
+**open at the top with a 5 mm floor underneath** (`SLOT_FLOOR`). Install order: hang the hook on the
+rim, then lower the cap's rail into the slot. Verified: the cap moved 0.3 mm down hits the floor,
+moving it up is free, pulling it off the glass is blocked. Updated the hook STL, mockup, stills,
+assembly preview, both drawings, narration line 6 (and its camera, now low so the floor shows),
+the video, and the docs. Lesson: check every retention feature against the actual load direction.
 
 ## User preferences observed
 - Wants **printable, practical** results: STLs ready to slice, BOM, install diagram.

@@ -19,14 +19,14 @@ Under the cap, a second barb holds a length of the same flexible tubing, which c
 At the top, clean water leaves through the outlet barb. A gasket seals the cap against the bottle lip, so the whole system stays pressurized.
 
 6
-00:00:53,508 --> 00:01:01,100
-A separate hook slides up onto a dovetail rail on the side of the cap, and hangs over the tank rim to carry the weight of the bottle.
+00:00:53,508 --> 00:01:04,683
+A separate hook hangs over the tank rim. A dovetail rail on the side of the cap drops into a slot in the hook from above and rests on its floor, so the weight of the bottle holds it in place.
 
 7
-00:01:01,800 --> 00:01:10,642
+00:01:05,383 --> 00:01:14,225
 The blue return hose arcs back over the rim, where a snap-in clip holds it pointing down into the tank, so it can't flip out and spray water on the floor.
 
 8
-00:01:11,342 --> 00:01:19,517
+00:01:14,925 --> 00:01:23,100
 Pump, feed hose, filter, and return. A simple, sealed canister filter for small tanks, made from a bottle you already have.
 

@@ -52,8 +52,12 @@ floss lets it follow.
 
 ## Tank hook: `bottle_filter_tank_hook.stl`
 The profile is in the YZ plane (`hook_profile()`), extruded `HOOK_W` 26 along X.
-- Standoff block y 19.75 to 35, z 0 to 24.5, containing the dovetail slot (clearance `CLR` 0.25 per
-  side). The slot is closed at the top (z 19.75 to 24.5) and open at the bottom.
+- Standoff block y 19.75 to 35, z −5 to 24.5, containing the dovetail slot (clearance `CLR` 0.25 per
+  side). The slot is **open at the top and closed at the bottom** by a 5 mm floor (`SLOT_FLOOR`,
+  z −5 to 0). The cap's rail drops in from above and its bottom end (z 0) rests on the floor, so the
+  bottle's weight holds it in; the 45° flanks stop it pulling away from the glass. Lift the cap
+  straight up to remove it. (Before 2026-10-12 this was upside down: closed top, open bottom, so the
+  bottle could slide out the bottom. See 01, R8.)
 - Plate against the outside glass: y 30 to 35 (`HOOK_T` 5). The glass outer face is at y 35
   (`BOTTLE_R`+2), so the bottle body clears the glass by about 2 mm.
 - Bridge over the rim at z 55 to 60 (`HOOK_H` 55, the rim height above the cap's open end).
@@ -61,6 +65,7 @@ The profile is in the YZ plane (`hook_profile()`), extruded `HOOK_W` 26 along X.
 - Lip inside the tank: 5 thick, reaches `LIP_L` 18 down.
 - Exported **lying on its side** (`lay_flat`: X becomes vertical). Layers then run along the J,
   and the 45° dovetail flanks print without support.
+- The floor (y 19.75 to 35) clears the bottle's neck flange (r 16.5) and shoulder.
 - Load: a 500 mL bottle full of water is about 0.6 kg. Rough bending stress at the plate is about
   5 MPa, well under PETG layer strength.
 

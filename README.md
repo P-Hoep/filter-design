@@ -7,8 +7,8 @@ The whole system is sealed and runs under pressure, like a full-size canister fi
 
 [![Flythrough preview: click for the narrated video](media/filter_flythrough_preview.gif)](media/filter_flythrough_480p.mp4)
 
-▶ **Narrated flythrough:** [480p, 1.5 MB](media/filter_flythrough_480p.mp4) · [720p, 7.6 MB](filter_flythrough.mp4)
-(80 s, Kokoro narration, captions included)
+▶ **Narrated flythrough:** [480p, 1.6 MB](media/filter_flythrough_480p.mp4) · [720p, 7.9 MB](filter_flythrough.mp4)
+(83 s, Kokoro narration, captions included)
 
 ## How it works
 
@@ -19,7 +19,7 @@ The whole system is sealed and runs under pressure, like a full-size canister fi
 3. Inside the bottle, an **intake hose** (the same tubing, pushed onto a barb under the inlet) carries the water to the bottom.
 4. The water rises up through the **filter media** (floss / sponge) and leaves through the **outlet** barb.
 5. The **return hose** (blue) goes back over the rim, held in place by the **return clip**.
-6. The whole filter hangs on the outside of the tank from the **tank hook**.
+6. The whole filter hangs on the outside of the tank from the **tank hook**: hang the hook on the rim, then lower the cap's rail into the hook's slot from above.
 
 ![Installation layout](mockup/installation_layout.png)
 
@@ -28,7 +28,7 @@ The whole system is sealed and runs under pressure, like a full-size canister fi
 | Part | File | Material / orientation |
 |------|------|------------------------|
 | Filter head (cap): PCO-1881 thread, inlet + outlet barbs for 1/4" ID tube, intake barb underneath, gasket seat, hook rail | [`bottle_filter_cap.stl`](bottle_filter_cap.stl) | PETG, 100% infill, open end down |
-| Tank hook: slides onto the cap's dovetail rail, fits glass up to 12 mm | [`bottle_filter_tank_hook.stl`](bottle_filter_tank_hook.stl) | PETG, flat as exported |
+| Tank hook: hangs on the rim; the cap's dovetail rail drops into its slot from above and rests on the slot floor. Fits glass up to 12 mm | [`bottle_filter_tank_hook.stl`](bottle_filter_tank_hook.stl) | PETG, flat as exported |
 | Return clip: grips the rim, snap ring for 3/8" OD hose | [`bottle_filter_return_clip.stl`](bottle_filter_return_clip.stl) | PETG, flat as exported |
 | Gasket: 27.5 OD × 21 ID × 2 | [`bottle_filter_gasket_tpu.stl`](bottle_filter_gasket_tpu.stl) | TPU 95A (or cut from rubber sheet) |
 

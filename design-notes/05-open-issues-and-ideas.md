@@ -21,9 +21,11 @@
    smaller barb) are options. Also, a soft hose may float or curl instead of reaching the bottom; the media normally holds it.
 7. **Hook in the mockup is at y=+side and the pump at x=-55.** The real install can mirror this; only the
    clip and hook positions along the rim are free.
-8. `bottle_filter_assembly_preview.png` is now a Blender render (scene `parts_preview` in `mockup/filter_mockup_stills.blend`) of cap + hook only; it doesn't show the clip.
-9. `make_video.py` writes the MP4 to `mockup/video/`; the tracked copy is at the repo root. Copy it after regenerating.
-10. **GitHub README video:** GitHub does not render `<video>` or a relative `.mp4` from the repo as an inline
+8. **Retention features vs. load direction.** The hook slot was once upside down (R8). Any new clip, slot or
+   catch should be checked by moving the parts along the load direction in manifold and confirming they collide.
+9. `bottle_filter_assembly_preview.png` is now a Blender render (scene `parts_preview` in `mockup/filter_mockup_stills.blend`) of cap + hook only; it doesn't show the clip.
+10. `make_video.py` writes the MP4 to `mockup/video/`; the tracked copy is at the repo root. Copy it after regenerating.
+11. **GitHub README video:** GitHub does not render `<video>` or a relative `.mp4` from the repo as an inline
     player. It only does that for files uploaded via the web editor (`github.com/user-attachments/...`, ≤10 MB
     on free plans). So the README shows a GIF teaser linking to `media/filter_flythrough_480p.mp4`.
     For an inline player, the user can drag the 480p MP4 into the README editor on github.com.
