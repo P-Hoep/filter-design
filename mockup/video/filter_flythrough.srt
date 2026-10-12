@@ -11,22 +11,22 @@ Inside the tank, a small submersible pump sits on the floor, held against the gl
 The feed hose climbs up and over the rim of the tank, then drops down onto the inlet barb on the filter head.
 
 4
-00:00:28,467 --> 00:00:40,517
-From the inlet, a printed dip tube carries the water all the way to the bottom of the bottle. The water then has to rise back up through the entire column of filter media, so none of it can take a shortcut.
+00:00:28,467 --> 00:00:43,600
+Under the cap, a second barb holds a length of the same flexible tubing, which carries the water all the way to the bottom of the bottle. The water then has to rise back up through the entire column of filter media, so none of it can take a shortcut.
 
 5
-00:00:41,217 --> 00:00:49,725
+00:00:44,300 --> 00:00:52,808
 At the top, clean water leaves through the outlet barb. A gasket seals the cap against the bottle lip, so the whole system stays pressurized.
 
 6
-00:00:50,425 --> 00:00:58,017
+00:00:53,508 --> 00:01:01,100
 A separate hook slides up onto a dovetail rail on the side of the cap, and hangs over the tank rim to carry the weight of the bottle.
 
 7
-00:00:58,717 --> 00:01:07,558
+00:01:01,800 --> 00:01:10,642
 The blue return hose arcs back over the rim, where a snap-in clip holds it pointing down into the tank, so it can't flip out and spray water on the floor.
 
 8
-00:01:08,258 --> 00:01:16,433
+00:01:11,342 --> 00:01:19,517
 Pump, feed hose, filter, and return. A simple, sealed canister filter for small tanks, made from a bottle you already have.
 

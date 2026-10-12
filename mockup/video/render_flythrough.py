@@ -2,7 +2,7 @@
 
     Blender -b --python render_flythrough.py -- [preview]
 Reads shots.json (camera/look-at paths in mockup mm) and timing.json (seconds per shot from
-narrate.py), and renders PNG frames to frames/. "preview" renders only the first frame of each shot.
+narrate.py), saves the animated scene as filter_flythrough.blend, and renders PNG frames to frames/. "preview" renders only the first frame of each shot.
 """
 import json
 import math
@@ -75,6 +75,9 @@ for shot, dur in zip(shots, timing):
         target.keyframe_insert("location", frame=f)
     frame += n
 sc.frame_start, sc.frame_end = 1, frame - 1
+
+sc.frame_set(1)
+bpy.ops.wm.save_as_mainfile(filepath=os.path.join(HERE, "filter_flythrough.blend"), compress=True)
 
 os.makedirs(os.path.join(HERE, "frames"), exist_ok=True)
 if preview:

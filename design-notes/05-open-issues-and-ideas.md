@@ -15,13 +15,14 @@
    strainer cup on the cap underside would need supports (it hangs from the ceiling when
    printed open-end-down). Alternatively, a separate push-in strainer part.
 5. **Flow restriction.** 4.4 mm bores are fine for mini pumps. For bigger pumps, enlarge the barbs
-   and bores (5/16" or 3/8" tubing); `PORT_X` would need revisiting, since the ports are already close to the neck bore.
-6. **The dip tube is tall and thin.** Printing can wobble. The 1/4" OD rigid tube alternative is in the BOM.
+   and bores (5/16" or 3/8" tubing); `PORT_IN_X`/`PORT_OUT_X` would need revisiting: the intake hose already fills most of the neck bore.
+6. **The intake hose twists with the cap.** It turns about 1.5 to 2 times as the cap goes on. Loose floss lets it
+   follow; tightly packed sponge could kink it. If it's a problem, a swivel or a smaller hose (e.g. 4/6 mm airline on a
+   smaller barb) are options. Also, a soft hose may float or curl instead of reaching the bottom; the media normally holds it.
 7. **Hook in the mockup is at y=+side and the pump at x=-55.** The real install can mirror this; only the
    clip and hook positions along the rim are free.
-8. `bottle_filter_assembly_preview.png` predates the return clip and the final colours.
-9. `mockup/README.md` lists the video at `video/filter_flythrough.mp4`, but the user moved it to
-   the repo root.
+8. `bottle_filter_assembly_preview.png` is now a Blender render (scene `parts_preview` in `mockup/filter_mockup_stills.blend`) of cap + hook only; it doesn't show the clip.
+9. `make_video.py` writes the MP4 to `mockup/video/`; the tracked copy is at the repo root. Copy it after regenerating.
 10. **GitHub README video:** GitHub does not render `<video>` or a relative `.mp4` from the repo as an inline
     player. It only does that for files uploaded via the web editor (`github.com/user-attachments/...`, ≤10 MB
     on free plans). So the README shows a GIF teaser linking to `media/filter_flythrough_480p.mp4`.
@@ -30,8 +31,6 @@
     `ffmpeg -i filter_flythrough.mp4 -map 0:v -map 0:a -map '0:s?' -vf scale=854:-2 -c:v libx264 -crf 30 -preset slow -c:a aac -b:a 64k -c:s mov_text -movflags +faststart media/filter_flythrough_480p.mp4`
     and, for the GIF, `select` three ranges, then `setpts=N/(24*TB)` (use the *source* fps or it plays in slow motion), `fps=10`, `scale=560`,
     then palettegen/paletteuse. Quote `'0:s?'` in zsh.
-11. The `build_filter_cap.py` docstring says the solid is built "from the dimensions in the DXF".
-    It's actually the other way round: the script is the source of truth and the DXF documents it.
 
 ## Likely next requests (and how to approach them)
 - **"Make it fit a different bottle"**: change the thread constants. For 38 mm necks or jars,

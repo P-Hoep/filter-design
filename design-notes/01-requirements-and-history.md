@@ -64,9 +64,29 @@ captions and ffmpeg overlays them, plus a soft `mov_text` subtitle track and an 
 Before this request, the user moved the whole project into `filter/filter-design/` (now a git repo
 with remote `P-Hoep/filter-design`) and copied the MP4 to the repo root.
 
+## R7: Replace the printed dip tube with a barb + flexible tubing
+> "There is a fixed tube that goes inside the bottle on the intake which sends it to the bottom.
+> Instead lets put another barbed fitting and just use another section of flexible tubing for that
+> part. Update the models and the videos and everything."
+
+**Resolution**
+- Socket and printed dip tube removed (`bottle_filter_dip_tube.stl` deleted). The cap now has a
+  downward **intake barb** under the inlet, and the user pushes a length of the same 1/4" ID
+  tubing onto it.
+- 1/4" ID tubing is ~10.8 mm OD when stretched over a barb, which doesn't fit beside the old
+  ±6.5 inlet inside the ~21.7 mm neck. So the ports became asymmetric: inlet x −4.8, outlet x +7.0.
+  The intake barb ridges are Ø7.2 (vs Ø7.6 on top) to keep the hose inside the gasket ID.
+- The barb tip is flush with the cap's open end, so it prints standing on the bed (no supports).
+- Updated: STLs, mockup GLB (red intake hose), stills, assembly preview (now rendered in Blender),
+  both CADCraft drawings (the top view's ports had been drawn at ±11.5; fixed), narration line 4,
+  the full flythrough, the 480p video and the GIF, plus the docs. Blender scenes are now saved in the
+  repo (`mockup/video/filter_flythrough.blend`, `mockup/filter_mockup_stills.blend`).
+
 ## User preferences observed
 - Wants **printable, practical** results: STLs ready to slice, BOM, install diagram.
 - Thinks in terms of real-world function (flow path, bypass, hanging, hoses popping off).
   Proactively flag functional risks (e.g. siphoning).
 - Adds requests mid-task; fold them in without losing the current thread.
 - Uses the "craft" MCP apps (CADCraft) and likes visual outputs (drawings, renders, video).
+- Prefers off-the-shelf flexible tubing to printed rigid tubes where it works (R7).
+- Wants Blender work saved into the project as .blend files, not just rendered headless.

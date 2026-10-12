@@ -10,7 +10,8 @@ soda/water bottle:
 - A printed **filter head (cap)** screws onto the bottle (PCO-1881 thread) and has an inlet and
   an outlet hose barb.
 - A small **submersible pump** in the tank pushes water through the **feed hose** to the inlet.
-- A printed **dip tube** carries that water to the **bottom of the bottle**, so it has to rise
+- A **barb under the inlet** holds a length of the same flexible tubing (the **intake hose**), which carries that
+  water to the **bottom of the bottle**, so it has to rise
   through *all* the filter media (this was an explicit user requirement: no bypass).
 - Filtered water leaves through the outlet barb and the **return hose** back into the tank.
 - The system is sealed (gasket), so it runs pressurized like a real canister filter.
@@ -30,21 +31,21 @@ soda/water bottle:
 ```
 build_filter_cap.py            SINGLE SOURCE OF TRUTH for all printed geometry -> STLs
 bottle_filter_cap.stl          filter head (PETG)
-bottle_filter_dip_tube.stl     dip tube (PETG)
 bottle_filter_tank_hook.stl    hook, already in print pose (PETG)
 bottle_filter_return_clip.stl  rim clip for return hose, already in print pose (PETG)
 bottle_filter_gasket_tpu.stl   optional printed gasket (TPU)
 bottle_filter_cap.dxf / _drawing.png   CADCraft engineering drawing (section, top view, hook side view)
-bottle_filter_assembly_preview.png     matplotlib render of cap + hook + dip tube (made before the clip existed)
-filter_flythrough.mp4          narrated video, 720p 7.3 MB (the user copied it here from mockup/video/)
-media/filter_flythrough_480p.mp4     compressed video (854x480, crf 30, 1.4 MB) linked from README
-media/filter_flythrough_preview.gif  16 s / 2.9 MB teaser (3 clips) shown inline in README
+bottle_filter_assembly_preview.png     Blender render: cap underside (intake barb) and cap + hook with tubing
+filter_flythrough.mp4          narrated video, 720p 7.6 MB (the user copied it here from mockup/video/)
+media/filter_flythrough_480p.mp4     compressed video (854x480, crf 30, 1.5 MB) linked from README
+media/filter_flythrough_preview.gif  16 s / 3.5 MB teaser (3 clips: intro, intake hose, return clip) shown inline in README
 README.md                      public project page: overview, images, GIF -> video link, params
 PARTS_LIST.md                  non-printed bill of materials + leak/siphon warning
 mockup/                        full-system scene: tank, bottle, pump, hoses (see mockup/README.md)
   build_mockup.py              imports ../build_filter_cap.py; writes filter_mockup.glb + scene json
   installation_layout.dxf/.png CADCraft side-elevation install diagram
-  video/                       narration + Blender flythrough + ffmpeg assembly scripts
+  filter_mockup_stills.blend   Blender scene for the stills + parts_preview scene
+  video/                       narration + Blender flythrough + ffmpeg assembly scripts, filter_flythrough.blend
 design-notes/                  this folder
 ```
 

@@ -60,11 +60,10 @@ def bottle():
 
 
 def media():
-    """Filter floss / sponge filling the bottle body (the dip tube runs through it)."""
+    """Filter floss / sponge filling the bottle body (the intake hose runs down through it)."""
     lip = fc.H_SKIRT - fc.GASKET_T
-    m = revolve([(0, lip - BOTTLE_H + 4), (fc.BOTTLE_R - 2, lip - BOTTLE_H + 4),
-                 (fc.BOTTLE_R - 2, lip - 80), (0, lip - 80)])
-    return m - fc.cyl(fc.DIP_R_OUT + 0.3, -400, 100, -fc.PORT_X)
+    return revolve([(0, lip - BOTTLE_H + 4), (fc.BOTTLE_R - 2, lip - BOTTLE_H + 4),
+                    (fc.BOTTLE_R - 2, lip - 80), (0, lip - 80)])
 
 
 def pump():
@@ -129,7 +128,6 @@ def build_scene():
     parts["cap"] = tm(fc.build_cap())
     parts["tank_hook"] = tm(fc.build_hook(print_pose=False))
     parts["return_clip"] = tm(fc.build_return_clip(print_pose=False).translate((CLIP_X, 0, 0)))
-    parts["dip_tube"] = tm(fc.build_dip_tube().translate((-fc.PORT_X, 0, fc.H_SKIRT - fc.DIP_LEN)))
     parts["bottle"] = tm(bottle())
     parts["media"] = tm(media())
     pump_body, cups, nozzle_top = pump()
@@ -142,23 +140,30 @@ def build_scene():
     mid = (G0 + G1) / 2
     px, py, pz = nozzle_top
     feed_pts = [(px, py, pz - 10), (px, py, pz + 20), (px, py, WATER + 10), (px, py, RIM + 10),
-                (px * 0.6, mid, OVER_RIM), (-fc.PORT_X - 8, 10, OVER_RIM - 4),
-                (-fc.PORT_X, 0, barb_top + 18), (-fc.PORT_X, 0, barb_top), (-fc.PORT_X, 0, 22.0)]
-    ret_pts = [(fc.PORT_X, 0, 22.0), (fc.PORT_X, 0, barb_top), (fc.PORT_X, 0, barb_top + 18),
-               (fc.PORT_X + 10, 10, OVER_RIM - 4), (CLIP_X * 0.8, mid, OVER_RIM),
+                (px * 0.6, mid, OVER_RIM), (fc.PORT_IN_X - 8, 10, OVER_RIM - 4),
+                (fc.PORT_IN_X, 0, barb_top + 18), (fc.PORT_IN_X, 0, barb_top), (fc.PORT_IN_X, 0, 22.0)]
+    ret_pts = [(fc.PORT_OUT_X, 0, 22.0), (fc.PORT_OUT_X, 0, barb_top), (fc.PORT_OUT_X, 0, barb_top + 18),
+               (fc.PORT_OUT_X + 10, 10, OVER_RIM - 4), (CLIP_X * 0.8, mid, OVER_RIM),
                (CLIP_X, yc, RIM + 8), (CLIP_X, yc, RIM - fc.CLIP_IN_L - 4)]   # ends just below the clip
     parts["feed_hose"], feed_path = hose(feed_pts)
     parts["return_hose"], ret_path = hose(ret_pts)
+    # intake hose: same tubing, pushed up onto the barb under the inlet, straight down the neck,
+    # then sagging a little off-axis through the media like real flexible tubing
+    x0, z_end = fc.PORT_IN_X, fc.H_SKIRT - fc.INTAKE_HOSE_LEN
+    intake_pts = [(x0, 0, fc.H_SKIRT - 1.5), (x0, 0, -15), (x0, 0, -30), (x0 - 6, -3, -70),
+                  (x0 - 9, -5, -120), (x0 - 7, -4, z_end + 25), (x0 - 6, -4, z_end)]
+    parts["intake_hose"], intake_path = hose(intake_pts)
 
     info = dict(G0=G0, G1=G1, RIM=RIM, FLOOR=FLOOR, WATER=WATER, BOTTLE_H=BOTTLE_H,
                 lip=fc.H_SKIRT - fc.GASKET_T, pump=PUMP, pump_y=G1 + 8, nozzle_top=nozzle_top,
-                clip_x=CLIP_X, clip_yc=yc, feed_path=feed_path.tolist(), return_path=ret_path.tolist())
+                clip_x=CLIP_X, clip_yc=yc, feed_path=feed_path.tolist(), return_path=ret_path.tolist(),
+                intake_path=intake_path.tolist())
     return parts, info
 
 
 COLORS = {  # RGBA 0-1
     "cap": (0.15, 0.45, 0.85, 1), "tank_hook": (0.95, 0.5, 0.1, 1), "return_clip": (0.95, 0.5, 0.1, 1),
-    "dip_tube": (0.2, 0.7, 0.3, 1), "bottle": (0.8, 0.9, 1.0, 0.2), "media": (0.95, 0.7, 0.25, 0.45),
+    "intake_hose": (0.9, 0.15, 0.15, 1), "bottle": (0.8, 0.9, 1.0, 0.2), "media": (0.95, 0.7, 0.25, 0.45),
     "pump": (0.2, 0.2, 0.22, 1), "suction_cups": (0.85, 0.85, 0.85, 0.8),
     "glass": (0.7, 0.9, 0.9, 0.12), "tank_floor": (0.25, 0.22, 0.2, 1), "water": (0.3, 0.6, 0.9, 0.1),
     "feed_hose": (0.9, 0.15, 0.15, 1), "return_hose": (0.1, 0.55, 0.95, 1),

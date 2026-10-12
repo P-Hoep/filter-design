@@ -1,1 +1,6 @@
 .DS_Store
+__pycache__/
+*.blend1
+mockup/video/frames/
+mockup/video/captions/
+mockup/video/filter_flythrough.mp4

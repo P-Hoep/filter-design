@@ -40,7 +40,8 @@ copy it there after regenerating. `frames/` and `captions/` are intermediates; d
   **The sign matters:** `twist_degrees` positive = right-hand thread with this section. The
   first attempt used a negative twist and produced a left-hand thread; it was caught by slicing (see 04).
 - Cap order of operations: body + barbs → subtract grip grooves → add rail → subtract thread,
-  gasket pocket, chamfer, socket, bores. Adding the rail *after* the grooves keeps it solid.
+  gasket pocket, chamfer → add the intake barb → subtract the bores. The barb goes in *after*
+  the thread/pocket cuts, or those would remove it. Adding the rail *after* the grooves keeps it solid.
   Subtracting the bore *after* the rail keeps the web out of the interior.
 - `save()` converts to trimesh and prints the triangle count, `watertight`, volume and bounds. Read that line.
 
@@ -73,6 +74,9 @@ copy it there after regenerating. `frames/` and `captions/` are intermediates; d
   the `.srt` as `mov_text`. Fade in/out. libx264 crf 20, AAC 160k.
 
 ## CADCraft usage notes
+- **`properties.set` reports `changed` but ignores polyline `vertices` and dimension `p13`/`p14`.**
+  It does apply `center`, `start`/`end` and MText `text`. To change a polyline's shape, erase it
+  and redraw with `pline {vertices, closed, width}`; to move a dimension, redraw it with `dimlinear`.
 - Use a **metric** drawing (`new_drawing {metric:true}`).
 - Fastest input is the `script` tool with AutoCAD syntax, one command per line, blank line =
   Enter: `pline x,y x,y ... c`, `rectang`, `circle`, `line ... ` + blank line.
@@ -93,7 +97,9 @@ copy it there after regenerating. `frames/` and `captions/` are intermediates; d
 ## The two CADCraft drawings
 1. `bottle_filter_cap.dxf`: Section A-A through the ports (layers BODY/HIDDEN/DIMS/NOTES):
    wall/plate/barb profiles with ANSI31 hatch, thread teeth (left/right offset half a pitch), gasket,
-   ghost bottle neck and dip tube. Top view at (55,10) with the rail. Hook side view at x≈100 to 160.
+   ghost bottle neck and intake hose, intake barb in the section. Top view at (55,10) with the rail
+   (ports at x 50.2 / 62.0). Hook side view at x≈100 to 160.
 2. `mockup/installation_layout.dxf`: side elevation (Y horizontal, Z vertical) generated from
-   `filter_mockup_scene.json`. Layers TANK/BOTTLE/MEDIA/DIP/PRINTED/PUMP/FEED/RETURN/NOTES.
+   `filter_mockup_scene.json`. Layers TANK/BOTTLE/MEDIA/DIP/PRINTED/PUMP/FEED/RETURN/NOTES (DIP is now empty; the intake
+   hose is a 9.5-wide polyline on FEED).
    Hoses are 9.5-wide polylines (the curves show jaggies in the preview from short segments).

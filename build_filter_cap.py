@@ -1,6 +1,6 @@
 """Mini canister filter head: screw-on cap for a 28 mm PCO-1881 soda/water bottle.
 
-Builds the 3D solid from the dimensions in bottle_filter_cap.dxf (CADCraft drawing)
+Source of truth for all printed geometry (the CADCraft drawing bottle_filter_cap.dxf documents it)
 and writes printable STLs. Units: mm. Z=0 is the open end of the cap.
 
     python build_filter_cap.py        (needs: pip install manifold3d numpy trimesh)
@@ -23,20 +23,20 @@ TOOTH_ROOT_W = 1.5    # cap tooth width at root (axial)
 TOOTH_CREST_W = 0.5   # cap tooth width at crest
 THREAD_TOP = 11.5     # threads stop below the gasket pocket
 GASKET_T = 2.0        # gasket pocket depth above thread
-PORT_X = 6.5          # inlet at -X, outlet at +X
+PORT_IN_X = -4.8      # inlet (top barb + intake barb underneath); close to the axis so the
+                      # intake hose (r 10.0 stretched) stays inside the gasket ID and neck bore
+PORT_OUT_X = 7.0      # outlet
 R_HOLE = 2.2          # 4.4 mm flow bore
-R_SOCKET = 3.25       # 6.5 mm socket for 1/4" OD dip tube
-SOCKET_TOP = 17.5     # socket depth = 4 mm into top plate
 KNURLS, R_KNURL = 30, 0.9
-GASKET_ID_R = 10.5    # 21 mm gasket ID clears the dip tube
+GASKET_ID_R = 10.5    # 21 mm gasket ID clears the intake hose
 
-# Dip tube: carries pump water to the bottom of the bottle so it must rise through all the media
-DIP_LEN = 180.0       # below the cap ceiling; set to (bottle height - ~20 mm)
-DIP_R_OUT = 3.5       # 7 mm OD fits inside the ~21.7 mm neck bore next to the outlet
-DIP_R_IN = 2.2
-DIP_SPIGOT_R = 3.15   # 6.3 mm push-fit into the 6.5 mm socket (wrap with PTFE tape)
-DIP_SPIGOT_L = 3.8
-DIP_NOTCH_W, DIP_NOTCH_H = 2.5, 4.0   # flow notches at the bottom end
+# Intake barb: points down from the cap ceiling under the inlet. A length of the same 1/4" ID
+# tubing pushes up onto it and carries pump water to the bottom of the bottle, so it must rise
+# through all the media.
+IBARB_SHANK_R = 3.0   # same shank and bore as the top barbs
+IBARB_RIDGE_R = 3.6   # 7.2 mm ridges (top barbs: 7.6); the hose here only sees the media pressure drop
+IBARB_ROOT_R = 4.2    # fillet cone where the barb meets the ceiling
+INTAKE_HOSE_LEN = 180.0   # tubing length below the cap ceiling; cut to (bottle height - ~20 mm)
 
 # Tank hook: slides up onto a dovetail rail on the cap (+Y side) and hangs over the tank rim
 RAIL_Y0, RAIL_Y1 = 20.0, 24.0   # rail from narrow neck (y0) to wide face (y1)
@@ -101,6 +101,17 @@ def barb(x):
     return Manifold.revolve(CrossSection([prof]), 96).translate((x, 0, 0))
 
 
+def intake_barb(x):
+    """Downward barb under the inlet, revolved from (r, z). Its tip is flush with the open end, so it
+    prints standing on the bed; the ridges widen upward (shallow overhang, flat tops)."""
+    r0, r1 = IBARB_SHANK_R, IBARB_RIDGE_R
+    prof = [(0, 0), (r0 - 0.3, 0), (r0, 0.3)]
+    for z in (0.3, 3.6, 6.9):           # three ridges, 3.3 mm pitch, hose slides up over them
+        prof += [(r1, z + 3.3), (r0, z + 3.3)]
+    prof += [(r0, H_SKIRT - 1.5), (IBARB_ROOT_R, H_SKIRT + 0.1), (0, H_SKIRT + 0.1)]
+    return Manifold.revolve(CrossSection([prof]), 96).translate((x, 0, 0))
+
+
 def dovetail(y0, y1, w0, w1, z0, z1):
     """Dovetail prism along Z: width w0 at y0 widening to w1 at y1."""
     xs = CrossSection([[(-w0 / 2, y0), (w0 / 2, y0), (w1 / 2, y1), (-w1 / 2, y1)]])
@@ -108,7 +119,7 @@ def dovetail(y0, y1, w0, w1, z0, z1):
 
 
 def build_cap():
-    body = cyl(R_OUT, 0, H_TOP) + barb(-PORT_X) + barb(PORT_X)
+    body = cyl(R_OUT, 0, H_TOP) + barb(PORT_IN_X) + barb(PORT_OUT_X)
     # grip grooves around the outside
     for k in range(KNURLS):
         a = 2 * math.pi * k / KNURLS
@@ -120,24 +131,15 @@ def build_cap():
     body -= thread_void(-1.0, THREAD_TOP)
     body -= cyl(R_BORE, THREAD_TOP - 0.01, H_SKIRT)
     body -= Manifold.cylinder(0.8, R_BORE + 0.6, R_BORE, 96).translate((0, 0, -0.01))
-    # flow paths
-    body -= cyl(R_SOCKET, H_SKIRT - 0.1, SOCKET_TOP, -PORT_X)   # dip-tube socket (inlet)
-    body -= cyl(R_HOLE, H_SKIRT - 0.1, 36, -PORT_X)
-    body -= cyl(R_HOLE, H_SKIRT - 0.1, 36, PORT_X)
+    # intake barb under the inlet, then the flow paths
+    body += intake_barb(PORT_IN_X)
+    body -= cyl(R_HOLE, -1, 36, PORT_IN_X)
+    body -= cyl(R_HOLE, H_SKIRT - 0.1, 36, PORT_OUT_X)
     return body
 
 
 def build_gasket():
     return cyl(13.75, 0, GASKET_T) - cyl(GASKET_ID_R, -1, GASKET_T + 1)
-
-
-def build_dip_tube():
-    """Printed standing on its notched end; the spigot end pushes into the inlet socket."""
-    tube = cyl(DIP_R_OUT, 0, DIP_LEN) + cyl(DIP_SPIGOT_R, DIP_LEN - 0.01, DIP_LEN + DIP_SPIGOT_L)
-    tube -= cyl(DIP_R_IN, -1, DIP_LEN + DIP_SPIGOT_L + 1)
-    for a in (0, 90):  # 4 notches so the end can't seal against the bottle floor
-        tube -= Manifold.cube((DIP_NOTCH_W, 2 * DIP_R_OUT + 2, 2 * DIP_NOTCH_H), center=True).rotate((0, 0, a))
-    return tube
 
 
 def hook_profile():
@@ -218,6 +220,5 @@ def save(m, path):
 if __name__ == "__main__":
     save(build_cap(), "bottle_filter_cap.stl")
     save(build_gasket(), "bottle_filter_gasket_tpu.stl")
-    save(build_dip_tube(), "bottle_filter_dip_tube.stl")
     save(build_hook(), "bottle_filter_tank_hook.stl")
     save(build_return_clip(), "bottle_filter_return_clip.stl")
