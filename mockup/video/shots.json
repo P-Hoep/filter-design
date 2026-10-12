@@ -1,0 +1,218 @@
+[
+ {
+  "text": "This is a mini canister filter built from an ordinary soda bottle. A 3D printed head screws onto the bottle, and the whole filter hangs on the outside of the tank.",
+  "cam": [
+   [
+    -330,
+    -330,
+    170
+   ],
+   [
+    -120,
+    -420,
+    130
+   ]
+  ],
+  "look": [
+   [
+    0,
+    50,
+    -50
+   ],
+   [
+    0,
+    40,
+    -40
+   ]
+  ]
+ },
+ {
+  "text": "Inside the tank, a small submersible pump sits on the floor, held against the glass with suction cups. It pushes tank water up through the red feed hose.",
+  "cam": [
+   [
+    -170,
+    260,
+    -110
+   ],
+   [
+    -150,
+    230,
+    -20
+   ]
+  ],
+  "look": [
+   [
+    -55,
+    60,
+    -170
+   ],
+   [
+    -50,
+    50,
+    -60
+   ]
+  ]
+ },
+ {
+  "text": "The feed hose climbs up and over the rim of the tank, then drops down onto the inlet barb on the filter head.",
+  "cam": [
+   [
+    -170,
+    190,
+    120
+   ],
+   [
+    -150,
+    -130,
+    140
+   ]
+  ],
+  "look": [
+   [
+    -35,
+    40,
+    60
+   ],
+   [
+    -6,
+    0,
+    35
+   ]
+  ]
+ },
+ {
+  "text": "From the inlet, a printed dip tube carries the water all the way to the bottom of the bottle. The water then has to rise back up through the entire column of filter media, so none of it can take a shortcut.",
+  "cam": [
+   [
+    -60,
+    -250,
+    -60
+   ],
+   [
+    70,
+    -220,
+    -150
+   ]
+  ],
+  "look": [
+   [
+    0,
+    0,
+    -90
+   ],
+   [
+    0,
+    0,
+    -150
+   ]
+  ]
+ },
+ {
+  "text": "At the top, clean water leaves through the outlet barb. A gasket seals the cap against the bottle lip, so the whole system stays pressurized.",
+  "cam": [
+   [
+    -110,
+    -100,
+    95
+   ],
+   [
+    70,
+    -130,
+    85
+   ]
+  ],
+  "look": [
+   [
+    0,
+    0,
+    25
+   ],
+   [
+    0,
+    0,
+    25
+   ]
+  ]
+ },
+ {
+  "text": "A separate hook slides up onto a dovetail rail on the side of the cap, and hangs over the tank rim to carry the weight of the bottle.",
+  "cam": [
+   [
+    210,
+    0,
+    70
+   ],
+   [
+    150,
+    -90,
+    100
+   ]
+  ],
+  "look": [
+   [
+    0,
+    35,
+    30
+   ],
+   [
+    0,
+    35,
+    30
+   ]
+  ]
+ },
+ {
+  "text": "The blue return hose arcs back over the rim, where a snap-in clip holds it pointing down into the tank, so it can't flip out and spray water on the floor.",
+  "cam": [
+   [
+    130,
+    230,
+    70
+   ],
+   [
+    40,
+    210,
+    10
+   ]
+  ],
+  "look": [
+   [
+    55,
+    45,
+    40
+   ],
+   [
+    55,
+    45,
+    30
+   ]
+  ]
+ },
+ {
+  "text": "Pump, feed hose, filter, and return. A simple, sealed canister filter for small tanks, made from a bottle you already have.",
+  "cam": [
+   [
+    -380,
+    -300,
+    210
+   ],
+   [
+    -440,
+    -90,
+    170
+   ]
+  ],
+  "look": [
+   [
+    0,
+    60,
+    -60
+   ],
+   [
+    0,
+    60,
+    -60
+   ]
+  ]
+ }
+]
